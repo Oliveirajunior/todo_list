@@ -3,8 +3,10 @@ const { Task } = require('../models')
 module.exports = {
   async index(req, res) {
     try {
-      const result = await Task.findAll()
-      res.json(result)
+      const result = await Task.findAll({
+        attributes: ['description']
+      })
+      return res.json(result)
     } catch (err) {
       res.send(err)
     }
@@ -13,7 +15,7 @@ module.exports = {
     try {
       const { id } = req.params
       const result = await Task.findByPk(id)
-      res.json(result)
+      return res.json(result)
     } catch (err) {
       res.send(err)
     }
@@ -22,7 +24,7 @@ module.exports = {
     try {
       const { description } = req.body
       const result = await Task.create({ description })
-      res.json(result)
+      return res.json(result)
     } catch (err) {
       res.send(err)
     }
@@ -32,7 +34,7 @@ module.exports = {
       const { id } = req.params
       const { description } = req.body
       const result = await Task.update({ description }, { where: { id } })
-      res.json(result)
+      return res.json(result)
     } catch (err) {
       res.send(err)
     }
@@ -41,7 +43,7 @@ module.exports = {
     try {
       const { id } = req.params
       const result = await Task.destroy({ where: { id } })
-      res.json(result)
+      return res.json(result)
     } catch (err) {
       res.send(err)
     }
