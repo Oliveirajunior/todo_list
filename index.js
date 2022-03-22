@@ -4,7 +4,7 @@ const router = require('./routes/Router')
 const cors = require('cors')
 require('./config/config.json')
 
-//app.use(express.urlencoded({ extended: false }))
+app.use(express.urlencoded({ extended: false }))
 app.use(express.json())
 app.use(router)
 app.use(cors())

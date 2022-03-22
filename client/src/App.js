@@ -8,7 +8,7 @@ function App() {
   return (
     <Fragment>
       <div className="container">
-        {/* <Input /> */}
+        <Input />
         <List />
       </div>
     </Fragment>

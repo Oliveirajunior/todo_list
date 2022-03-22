@@ -3,9 +3,7 @@ const { Task } = require('../models')
 module.exports = {
   async index(req, res) {
     try {
-      const result = await Task.findAll({
-        attributes: ['description']
-      })
+      const result = await Task.findAll()
       return res.json(result)
     } catch (err) {
       res.send(err)

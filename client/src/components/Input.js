@@ -1,3 +1,4 @@
+import axios from 'axios'
 import React, { Fragment, useState } from 'react'
 
 const Input = () => {
@@ -8,14 +9,14 @@ const Input = () => {
 
     try {
       const body = { description }
-      const response = await fetch('http://localhost:5000/api/tasks', {
+      /* const response = await fetch('http://localhost:5000/api/tasks', {
         method: 'POST',
         mode: 'cors',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(body)
-      })
-
-      console.log(response)
+      }) */
+      const res = await axios.post('/api/tasks', body)
+      console.log(res.data)
     } catch (err) {
       console.error(err.message)
     }
