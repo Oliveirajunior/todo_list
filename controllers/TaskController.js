@@ -6,7 +6,7 @@ module.exports = {
       const result = await Task.findAll()
       return res.json(result)
     } catch (err) {
-      res.send(err)
+      next(err)
     }
   },
   async select(req, res) {
@@ -15,7 +15,7 @@ module.exports = {
       const result = await Task.findByPk(id)
       return res.json(result)
     } catch (err) {
-      res.send(err)
+      next(err)
     }
   },
   async create(req, res) {
@@ -24,7 +24,7 @@ module.exports = {
       const result = await Task.create({ description })
       return res.json(result)
     } catch (err) {
-      res.send(err)
+      next(err)
     }
   },
   async update(req, res) {
@@ -34,7 +34,7 @@ module.exports = {
       const result = await Task.update({ description }, { where: { id } })
       return res.json(result)
     } catch (err) {
-      res.send(err)
+      next(err)
     }
   },
   async delete(req, res) {
@@ -43,7 +43,7 @@ module.exports = {
       const result = await Task.destroy({ where: { id } })
       return res.json(result)
     } catch (err) {
-      res.send(err)
+      next(err)
     }
   }
 }
