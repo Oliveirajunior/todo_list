@@ -3,7 +3,7 @@ const { Task } = require('../models')
 module.exports = {
   async index(req, res) {
     try {
-      const result = await Task.findAll()
+      const result = await Task.findAll({ order: [['id', 'ASC']] })
       return res.json(result)
     } catch (err) {
       next(err)

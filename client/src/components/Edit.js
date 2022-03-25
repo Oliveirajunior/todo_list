@@ -1,7 +1,7 @@
 import axios from 'axios'
 import React, { Fragment, useState } from 'react'
 
-const Edit = ({ todo }) => {
+const Edit = ({ todo, update }) => {
   const [description, setDescription] = useState(todo.description)
 
   const editTodo = async e => {
@@ -10,7 +10,8 @@ const Edit = ({ todo }) => {
       const body = { description }
       const res = await axios.put(`/api/tasks/${todo.id}`, body)
       console.log(res)
-      window.location = '/api/tasks'
+      //window.location = '/api/tasks'
+      update()
     } catch (err) {
       console.error(err.message)
     }

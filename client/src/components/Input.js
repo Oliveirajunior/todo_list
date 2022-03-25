@@ -17,11 +17,12 @@ const Input = () => {
       }) */
       const res = await axios.post('/api/tasks', body)
       console.log(res.data)
+      window.location = '/api/tasks'
     } catch (err) {
       console.error(err.message)
     }
   }
-
+  console.log(description) //teste
   return (
     <Fragment>
       <h1 className="text-center mt-5">PERN TODO LIST</h1>
